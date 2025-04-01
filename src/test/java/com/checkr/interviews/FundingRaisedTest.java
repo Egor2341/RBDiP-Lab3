@@ -14,60 +14,60 @@ public class FundingRaisedTest {
      * Rigourous Test :-)
      */
     @Test
-    public void whereGivenCompany() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsGivenCompany() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
 
-        assertEquals(7, FundingRaised.where(options).size());
+        assertEquals(7, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
-    public void whereGivenCity() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsGivenCity() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("city", "Tempe");
 
-        assertEquals(3, FundingRaised.where(options).size());
+        assertEquals(3, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
-    public void whereGivenState() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsGivenState() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("state", "CA");
 
-        assertEquals(873, FundingRaised.where(options).size());
+        assertEquals(873, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
-    public void whereGivenRound() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsGivenRound() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("round", "a");
 
-        assertEquals(582, FundingRaised.where(options).size());
+        assertEquals(582, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
     public void multipleOptions() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("round", "a");
         options.put("company_name", "Facebook");
 
-        assertEquals(1, FundingRaised.where(options).size());
+        assertEquals(1, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
-    public void whereNotExists() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsNotExists() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "NotFacebook");
 
-        assertEquals(0, FundingRaised.where(options).size());
+        assertEquals(0, FundingRaised.GetAllRowsByOptions(options).size());
     }
 
     @Test
-    public void whereCorrectKeys() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getAllRowsByOptionsCorrectKeys() throws IOException {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
 
-        Map<String, String> row = FundingRaised.where(options).get(0);
+        Map<String, String> row = FundingRaised.GetAllRowsByOptions(options).get(0);
 
         assertEquals("facebook", row.get("permalink"));
         assertEquals("Facebook", row.get("company_name"));
@@ -81,11 +81,11 @@ public class FundingRaisedTest {
     }
 
     @Test
-    public void findByGivenCompanyName() throws IOException, NoSuchEntryException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getFirstRowByOptionsGivenCompanyName() throws IOException, NoSuchEntryException {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
 
-        Map<String, String> row = FundingRaised.findBy(options);
+        Map<String, String> row = FundingRaised.GetFirstRowByOptions(options);
 
         assertEquals("facebook", row.get("permalink"));
         assertEquals("Facebook", row.get("company_name"));
@@ -99,11 +99,11 @@ public class FundingRaisedTest {
     }
 
     @Test
-    public void findByGivenState() throws IOException, NoSuchEntryException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getFirstRowByOptionsGivenState() throws IOException, NoSuchEntryException {
+        Map<String, String> options = new HashMap<>();
         options.put("state", "CA");
 
-        Map<String, String> row = FundingRaised.findBy(options);
+        Map<String, String> row = FundingRaised.GetFirstRowByOptions(options);
 
         assertEquals("digg", row.get("permalink"));
         assertEquals("Digg", row.get("company_name"));
@@ -117,12 +117,12 @@ public class FundingRaisedTest {
     }
 
     @Test
-    public void findByMultipleOptions() throws IOException, NoSuchEntryException {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getFirstRowByOptionsMultipleOptions() throws IOException, NoSuchEntryException {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
         options.put("round", "c");
 
-        Map<String, String> row = FundingRaised.findBy(options);
+        Map<String, String> row = FundingRaised.GetFirstRowByOptions(options);
 
         assertEquals("facebook", row.get("permalink"));
         assertEquals("Facebook", row.get("company_name"));
@@ -136,12 +136,12 @@ public class FundingRaisedTest {
     }
 
     @Test
-    public void findByNotExists() {
-        Map<String, String> options = new HashMap<String, String>();
+    public void getFirstRowByOptionsNotExists() {
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "NotFacebook");
         options.put("round", "c");
 
-        assertThrows(NoSuchEntryException.class, () -> FundingRaised.findBy(options));
+        assertThrows(NoSuchEntryException.class, () -> FundingRaised.GetFirstRowByOptions(options));
     }
 }
 
