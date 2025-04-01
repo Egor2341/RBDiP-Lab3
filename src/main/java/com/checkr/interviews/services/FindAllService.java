@@ -22,6 +22,4 @@ public class FindAllService {
         }
         return results;
     }
-
-
 }
