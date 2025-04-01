@@ -10,7 +10,7 @@ public class Main {
             Map<String, String> options = new HashMap<>();
             options.put("company_name", "Facebook");
             options.put("round", "a");
-            System.out.print(FundingRaised.GetAllRowsByOptions(options).size());
+            System.out.print(FundingRaised.getAllRowsByOptions(options).size());
         } catch(IOException e) {
             System.out.print(e.getMessage());
             System.out.print("error");

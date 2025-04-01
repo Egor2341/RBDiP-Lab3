@@ -15,7 +15,7 @@ public class FundingRaised {
             "state", 5,
             "round", 9
     );
-    public static List<Map<String, String>> GetAllRowsByOptions(Map<String, String> options) throws IOException {
+    public static List<Map<String, String>> getAllRowsByOptions(Map<String, String> options) throws IOException {
         List<String[]> data = CSVData.getData();
 
 
@@ -34,7 +34,7 @@ public class FundingRaised {
         return result;
     }
 
-    public static Map<String, String> GetFirstRowByOptions(Map<String, String> options) throws IOException, NoSuchEntryException {
+    public static Map<String, String> getFirstRowByOptions(Map<String, String> options) throws IOException, NoSuchEntryException {
         List<String[]> data = CSVData.getData();
         Map<String, String> result = new HashMap<> ();
         boolean find;
